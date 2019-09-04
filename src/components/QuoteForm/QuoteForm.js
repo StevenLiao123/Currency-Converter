@@ -16,6 +16,18 @@ class QuoteForm extends Component {
         };
     }
 
+    handleFromCurrencySelector = (event) => {
+        this.setState({
+            fromCurrency: event.target.value
+        });
+    }
+
+    handleToCurrencySelector = (event) => {
+        this.setState({
+            toCurrency: event.target.value
+        });
+    }
+
     render() {
         const { currencies, fromCurrency, rate, amount, toCurrency, result } = this.state
 
@@ -38,7 +50,7 @@ class QuoteForm extends Component {
                 <span className="telephone mb-4">Telephone / Mobile</span>
                 <div className="form-row text-left">
                     <div className="form-group col-md-2 pr-0">
-                        <select class="form-control" id="sel1">
+                        <select class="form-control">
                             <option>+61</option>
                             <option>+64</option>
                             <option>+44</option>
@@ -46,7 +58,7 @@ class QuoteForm extends Component {
                         </select>
                     </div>
                     <div className="form-group col-md-10 pl-0">
-                        <input type="text" className="form-control" />
+                        <input type="number" className="form-control" />
                     </div>
                 </div>
 
@@ -54,26 +66,30 @@ class QuoteForm extends Component {
                 <div className="form-row text-left">
                     <div className="form-group col-md-6">
                         <label >From Currency <span style={{ color: "red" }}>*</span></label>
-                        <select className="form-control">
-                            <option value="cad">CAD</option>
-                            <option value="usd">USD</option>
-                            <option value="eur">EUR</option>
-                            <option value="gbp">GBP</option>
-                            <option value="ars">ARS</option>
-                            <option value="aud">AUD</option>
-                            <option value="bbd">BBD</option>
+                        <select 
+                            className="form-control"
+                            name="fromCurrency"
+                            value={fromCurrency}
+                            onChange={this.handleFromCurrencySelector}
+                            >{currencies.map(currency => <option
+                                key={currency}
+                                value={currency}
+                                >{currency}
+                            </option>)}               
                         </select>
                     </div>
                     <div className="form-group col-md-6">
                         <label >To Currency <span style={{ color: "red" }}>*</span></label>
-                        <select className="form-control">
-                            <option value="cad">CAD</option>
-                            <option value="usd">USD</option>
-                            <option value="eur">EUR</option>
-                            <option value="gbp">GBP</option>
-                            <option value="ars">ARS</option>
-                            <option value="aud">AUD</option>
-                            <option value="bbd">BBD</option>
+                        <select 
+                            className="form-control"
+                            name="toCurrency"
+                            value={toCurrency}
+                            onChange={this.handleToCurrencySelector}
+                            >{currencies.map(currency => <option
+                                key={currency}
+                                value={currency}
+                                >{currency}
+                            </option>)} 
                         </select>
                     </div>
                     <div className="form-group col-md-6">
