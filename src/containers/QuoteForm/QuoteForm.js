@@ -133,7 +133,7 @@ class QuoteForm extends Component {
                                 required/>
                         </div>
                     </div>
-                    <button className="btn btn-primary rounded-pill mt-3 px-5" type="submit" value="submit" width="100px">GET QUOTE</button>
+                    <center><button className="btn btn-primary rounded-pill mt-3 px-5" type="submit" value="submit" width="100px">GET QUOTE</button></center>
                 </form>
             </div>
         );
