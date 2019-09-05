@@ -53,7 +53,7 @@ class QuoteForm extends Component {
                     this.props.history.push({ pathname: '/result', state: { rate, result, fromCurrency, toCurrency, amount } });
                 })
                 .catch(error => {
-                    console.log(error);
+                    alert("Please fill in all the required (*) information ^_^");
                 });
         }
     };
@@ -67,19 +67,19 @@ class QuoteForm extends Component {
                     <div className="form-row text-left">
                         <div className="form-group col-md-6">
                             <label>First Name  <span style={{ color: "red" }}>*</span></label>
-                            <input type="text" className="form-control" placeholder="First Name" />
+                            <input className="form-control" type="text" placeholder="First Name" required/>
                         </div>
                         <div className="form-group col-md-6">
                             <label>Last Name  <span style={{ color: "red" }}>*</span></label>
-                            <input type="text" className="form-control" placeholder="Last Name" />
+                            <input className="form-control" type="text" placeholder="Last Name" required/>
                         </div>
                     </div>
-                    <div className="form-group text-left">
+                    <div className="form-group">
                         <label>Email</label>
-                        <input type="email" className="form-control" id="inputEmail4" placeholder="Email" />
+                        <input className="form-control" type="email" placeholder="Email" />
                     </div>
                     <span className="telephone mb-4">Telephone / Mobile</span>
-                    <div className="form-row text-left">
+                    <div className="form-row">
                         <div className="form-group col-md-2 pr-0">
                             <select className="form-control">
                                 <option>+61</option>
@@ -89,10 +89,10 @@ class QuoteForm extends Component {
                             </select>
                         </div>
                         <div className="form-group col-md-10 pl-0">
-                            <input type="number" className="form-control" />
+                            <input className="form-control" type="number"  />
                         </div>
                     </div>
-                    <div className="form-row text-left">
+                    <div className="form-row">
                         <div className="form-group col-md-6">
                             <label >From Currency <span style={{ color: "red" }}>*</span></label>
                             <select
@@ -100,6 +100,7 @@ class QuoteForm extends Component {
                                 name="fromCurrency"
                                 value={fromCurrency}
                                 onChange={this.handleFromCurrencySelector}
+                                required
                             >{currencies.map(currency => <option
                                 key={currency}
                                 value={currency}
@@ -114,6 +115,7 @@ class QuoteForm extends Component {
                                 name="toCurrency"
                                 value={toCurrency}
                                 onChange={this.handleToCurrencySelector}
+                                required
                             >{currencies.map(currency => <option
                                 key={currency}
                                 value={currency}
@@ -128,13 +130,12 @@ class QuoteForm extends Component {
                                 value={amount}
                                 onChange={this.handleInputChange}
                                 className="form-control"
-                            />
+                                required/>
                         </div>
                     </div>
                     <button className="btn btn-primary rounded-pill mt-3 px-5" type="submit" value="submit" width="100px">GET QUOTE</button>
                 </form>
             </div>
-
         );
     }
 }
