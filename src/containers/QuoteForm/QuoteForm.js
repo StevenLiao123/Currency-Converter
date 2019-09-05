@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//import axios from 'axios';
 import CurrencyInput from 'react-currency-input';
 
 import './QuoteForm.css';
@@ -28,11 +29,52 @@ class QuoteForm extends Component {
         });
     }
 
+    handleInputChange = (event) => {
+        this.setState({
+            amount: event.target.value
+        }, this.getCurrencyData);
+    }
+
+    getCurrencyData = () => {
+        const amount = this.state.amount;
+        if (amount === isNaN) {
+            return
+        } else {
+           /* axios.get(`https://api.ofx.com/PublicSite.ApiService/OFX/spotrate/Individual/${this.state.fromCurrency}/${this.state.toCurrency}/${this.state.amount}?format=json`)
+                .then(res => {
+                    const rate = res.data.CustomerRate
+                    const result = res.data.CustomerAmount
+                    this.setState({
+                        rate, result
+                    })
+                    }
+                )
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
+
+            
+              fetch(`https://api.ofx.com/PublicSite.ApiService/OFX/spotrate/Individual/${this.state.base}/${this.state.convertTo}/${this.state.amount}?format =json`)
+              .then(res => res.json())
+              .then(data => {
+                  const rate = data.CustomerRate
+                  const result = data.CustomerAmount
+                  this.setState({
+                      rate, result
+                  })
+              })
+          */
+        }
+    };
+
     render() {
-        const { currencies, fromCurrency, rate, amount, toCurrency, result } = this.state
+        const { currencies, fromCurrency, amount, toCurrency } = this.state
 
         return (
-            <form class="form mt-3">
+            <div className="container">
+                <h1 className="header text-left pb-2" style={{borderBottom: `4px solid #92a8d1`}}>Quick Quote</h1>
+                <form class="form mt-3">
                 <div className="form-row text-left">
                     <div className="form-group col-md-6">
                         <label>First Name  <span style={{ color: "red" }}>*</span></label>
@@ -61,8 +103,6 @@ class QuoteForm extends Component {
                         <input type="number" className="form-control" />
                     </div>
                 </div>
-
-
                 <div className="form-row text-left">
                     <div className="form-group col-md-6">
                         <label >From Currency <span style={{ color: "red" }}>*</span></label>
@@ -94,11 +134,13 @@ class QuoteForm extends Component {
                     </div>
                     <div className="form-group col-md-6">
                         <label for="inputEmail4">Amount <span style={{ color: "red" }}>*</span></label>
-                        <CurrencyInput className="form-control" value={amount} onChangeEvent={this.handleChange} />
+                        <CurrencyInput className="form-control" value={amount} onChangeEvent={this.handleInputChange} />
                     </div>
                 </div>
                 <button type="submit" className="btn btn-primary rounded-pill mt-3 px-5" width="100px">GET QUOTE</button>
             </form>
+            </div>
+            
         );
     }
 }
