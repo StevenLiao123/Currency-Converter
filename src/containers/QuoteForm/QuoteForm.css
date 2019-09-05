@@ -1,16 +1,3 @@
 .form {
     font-size: 12px;
 }
-
-.first-name {
-    margin-bottom: 0;
-    padding-left: 40px;
-    text-align: left;
-}
-
-.first-name-input {
-    position: relative;
-    width:80%;
-    height:50%;
-    border-radius: 5%;
-}

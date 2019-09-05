@@ -1,0 +1,16 @@
+.currency-rate {
+    color: green;
+}
+
+.quote-result {
+    text-align: center; 
+}
+
+.content {
+    display: inline-block; 
+    text-align: left; 
+}
+
+.currency {
+    color: blue;
+}
