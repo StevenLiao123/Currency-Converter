@@ -1,4 +1,4 @@
--- Dotter Technical Test --
+-- Currency-Converter --
 
 This project was bootstrapped with Create React App.
 
